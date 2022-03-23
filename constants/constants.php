@@ -11,8 +11,8 @@
 
 namespace ppfilip\regfilter\constants;
 
-class constants {
-
+class constants
+{
 	const ACP_REGFILTER_COUNTRY_NOT_FOUND = 'WO';	// World, so unknown
 
 	const REGFILTER_COUNTRY_CODES = ['AF','AX','AL','DZ','AS','AD','AO','AI','AQ','AG','AR','AM','AW','AU','AT','AZ',
