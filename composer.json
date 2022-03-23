@@ -1,0 +1,26 @@
+{
+    "name": "ppfilip/regfilter",
+    "type": "phpbb-extension",
+    "description": "Filter registrations based on country code associated with the user's IP",
+    "homepage": "https://github.com/PPFilip/phpbb-ppfilip-regfilter",
+    "version": "0.0.1",
+    "time": "2022-03-22",
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Filip",
+            "email": "filip@q1b.net",
+            "homepage": "https://github.com/PPFilip",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.3"
+    },
+    "extra": {
+        "display-name": "Filter registrations by country",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.3.0,<4.0@dev"
+        }
+    }
+}

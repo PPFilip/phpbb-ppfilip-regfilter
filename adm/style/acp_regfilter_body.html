@@ -1,0 +1,71 @@
+{% include 'overall_header.html' %}
+<h1>{{ lang('ACP_REGFILTER_TITLE') }}</h1>
+<p>{{ lang('ACP_REGFILTER_TITLE_EXPLAIN') }}</p>
+
+{% if S_ERROR %}
+	<div class="errorbox">
+		<h3>{{ lang('WARNING') }}</h3>
+		<p>{{ ERROR_MSG }}</p>
+	</div>
+{% endif %}
+
+<form id="ppfilip_regfilter_acp" name="ppfilip_regfilter_acp" method="post" action="{{ U_ACTION }}">
+	<fieldset>
+{% if S_SETTINGS %}
+		<legend>{{ lang('SETTINGS') }}</legend>
+		<dl>
+			<dt><label>{{ lang('ACP_REGFILTER_ACCOUNT_ID') ~ lang('COLON') }}</label><br>{{ lang('ACP_REGFILTER_ACCOUNT_ID_EXPLAIN') }}</dt>
+			<dd><label><input id="ppfilip_regfilter_account_id" name="ppfilip_regfilter_account_id" size="16" maxlength="16" type="text" value="{{ REGFILTER_ACCOUNT_ID }}"></label>
+		</dl>
+		<dl>
+			<dt><label>{{ lang('ACP_REGFILTER_LICENSE_KEY') ~ lang('COLON') }}</label><br>{{ lang('ACP_REGFILTER_LICENSE_KEY_EXPLAIN') }}</dt>
+			<dd><label><input id="ppfilip_regfilter_license_key" name="ppfilip_regfilter_license_key" size="16" maxlength="16" type="text" value="{{ REGFILTER_LICENSE_KEY }}"></label>
+		</dl>
+    	<dl>
+			<dt><label>{{ lang('ACP_REGFILTER_ENDPOINT') ~ lang('COLON') }}</label><br>{{ lang('ACP_REGFILTER_ENDPOINT_EXPLAIN') }}</dt>
+			<dd><label><input id="ppfilip_regfilter_endpoint" name="ppfilip_regfilter_endpoint" size="50" maxlength="255" type="text" value="{{ REGFILTER_ENDPOINT }}"></label>
+		</dl>
+		<dl>
+				<dt><label for="ppfilip_regfilter_add_blocked_country_to_group">{{ lang('ACP_REGFILTER_ADD_DETECTED_SPAMMERS_TO_GROUP') ~ lang('COLON') }}</label><br/>{{ lang('ACP_REGFILTER_ADD_DETECTED_SPAMMERS_TO_GROUP_EXPLAIN') }}</dt>
+				<dd>
+						<select name="ppfilip_regfilter_add_blocked_country_to_group" id="ppfilip_regfilter_add_blocked_country_to_group">
+							<option value="0">{{ lang('ACP_REGFILTER_DONT_ADD_REGISTERING_SPAMMERS_TO_GROUP') }}</option>
+							{{ S_GROUP_LIST }}
+						</select>
+				</dd>
+		</dl>
+		<dl>
+			<dt><label>{{ lang('ACP_REGFILTER_LOG_ACCESS_ERRORS') ~ lang('COLON') }}</label><br>{{ lang('ACP_REGFILTER_LOG_ACCESS_ERRORS_EXPLAIN') }}</dt>
+			<dd><label><input type="radio" class="radio" name="ppfilip_regfilter_log_access_errors" value="1"{% if REGFILTER_LOG_ACCESS_ERRORS %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="ppfilip_regfilter_log_access_errors" value="0"{% if not REGFILTER_LOG_ACCESS_ERRORS %} checked="checked"{% endif %} /> {{ lang('NO') }}</label></dd>
+		</dl>
+		<dl>
+			<dt><label>{{ lang('ACP_REGFILTER_IP_NOT_FOUND_ALLOW') ~ lang('COLON') }}</label><br>{{ lang('ACP_REGFILTER_IP_NOT_FOUND_ALLOW_EXPLAIN') }}</dt>
+			<dd><label><input type="radio" class="radio" name="ppfilip_regfilter_ip_not_found_allow" value="1"{% if REGFILTER_IP_NOT_FOUND_ALLOW == 1 %} checked="checked"{% endif %} /> {{ lang('ACP_REGFILTER_ALLOW') }}</label>
+				<label><input type="radio" class="radio" name="ppfilip_regfilter_ip_not_found_allow" value="0"{% if REGFILTER_IP_NOT_FOUND_ALLOW == 0 %} checked="checked"{% endif %} /> {{ lang('ACP_REGFILTER_RESTRICT') }}</label>
+		</dl>
+		<dl>
+			<dt><label>{{ lang('ACP_REGFILTER_ALLOW_RESTRICT') ~ lang('COLON') }}</label><br>{{ lang('ACP_REGFILTER_ALLOW_RESTRICT_EXPLAIN') }}</dt>
+			<dd><label><input type="radio" class="radio" name="ppfilip_regfilter_allow" value="1"{% if REGFILTER_ALLOW_RESTRICT == 1 %} checked="checked"{% endif %} /> {{ lang('ACP_REGFILTER_ALLOW') }}</label>
+				<label><input type="radio" class="radio" name="ppfilip_regfilter_allow" value="0"{% if REGFILTER_ALLOW_RESTRICT == 0 %} checked="checked"{% endif %} /> {{ lang('ACP_REGFILTER_RESTRICT') }}</label>
+		</dl>
+		<dl>
+			<dt><label for="ppfilip_regfilter_country_codes">{{ lang('ACP_REGFILTER_COUNTRIES') ~ lang('COLON') }}</label><br>{{ lang('ACP_REGFILTER_COUNTRIES_EXPLAIN') }}<br>Selected: {{ COUNTRY_CODES }}</dt>
+			<dd>
+				<select id="ppfilip_regfilter_country_codes" name="ppfilip_regfilter_country_codes[]" size="10" multiple>
+					{% for country in loops.country %}
+					<option value="{{ country.CODE }}"{% if country.SELECTED %} selected{% endif %}>{{ lang('ACP_REGFILTER_COUNTRY_' ~ country.CODE) }}</option>
+					{% endfor %}
+				</select>
+				<br><br><button type="button" id="unselect_options" name="unselect_options">{{ lang('ACP_REGFILTER_UNSELECT_ALL') }}</button>
+			</dd>
+		</dl>
+{% endif %}
+	</fieldset>
+	<fieldset class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+		{{ S_FORM_TOKEN }}
+	</fieldset>
+</form>
+
+{% include 'overall_footer.html' %}

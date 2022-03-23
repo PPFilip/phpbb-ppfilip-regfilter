@@ -1,0 +1,40 @@
+services:
+    ppfilip.regfilter.listener:
+        class: ppfilip\regfilter\event\main_listener
+        arguments:
+            - '@language'
+            - '@request'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+            - '@config'
+            - '@log'
+            - '@user'
+            - '@config_text'
+            - '@ppfilip.regfilter.common'
+        tags:
+            - { name: event.listener }
+    ppfilip.regfilter.common:
+        class: ppfilip\regfilter\core\common
+        arguments:
+            - '@language'
+            - '%core.root_path%'
+            - '@config'
+            - '@log'
+            - '@user'
+            - '@request'
+    ppfilip.regfilter.controller.acp:
+        class: ppfilip\regfilter\controller\acp_controller
+        arguments:
+            - '@config'
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@config_text'
+            - '@ppfilip.regfilter.common'
+            - '@dbal.conn'
+            - '@group_helper'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+            - '%tables.groups%'
