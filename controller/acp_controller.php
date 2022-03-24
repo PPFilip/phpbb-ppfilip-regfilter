@@ -180,12 +180,14 @@ class acp_controller
 				'U_ACTION'      => $this->u_action,
 			));
 
+            $country_codes = explode(',', $this->config_text->get('ppfilip_regfilter_country_codes'));
+
 			// Populate the options list with a list of countries, in the user's language.
 			foreach (constants::REGFILTER_COUNTRY_CODES as $key => $value)
 			{
 				$this->template->assign_block_vars('country', array(
 					'CODE'	=> $value,
-					'SELECTED' => $this->helper->str_contains($this->config_text->get('ppfilip_regfilter_country_codes'), $value),
+					'SELECTED' => in_array($value, $country_codes),
 				));
 			}
 

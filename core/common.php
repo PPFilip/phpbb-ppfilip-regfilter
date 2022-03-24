@@ -66,18 +66,4 @@ class common
 		return $country_name;
 	}
 
-
-    public function str_contains($haystack, $needle)
-    {
-        if (!function_exists('str_contains'))
-        {
-            return $needle !== '' && mb_strpos($haystack, $needle) !== false;
-        }
-        else
-        {
-            return str_contains($haystack, $needle);
-        }
-    }
-
-
 }

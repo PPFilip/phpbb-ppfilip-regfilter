@@ -101,10 +101,18 @@ class main_listener implements EventSubscriberInterface
             $user_id = $event['user_id']; // Can't use $this->user->data['user_id'] as there isn't an actual user logged in during registration, of course.
             $user_row = $event['user_row'];
 
+            // Get a list of country codes of interest and place in an array for easy processing
+            $country_codes = explode(',', $this->config_text->get('ppfilip_regfilter_country_codes'));
+            if (count($country_codes) === 0)
+            {
+                // If the administrator hasn't selected any countries to allow or restrict, the extension is effectively disabled.
+                return;
+            }
+
             $iso_code = $this->get_country($user_ip);
 
             $is_on_blacklist = (
-                ($this->config['ppfilip_regfilter_allow'] xor $this->helper->str_contains($this->config_text->get('ppfilip_regfilter_country_codes'), $iso_code))
+                ($this->config['ppfilip_regfilter_allow'] xor in_array($iso_code, $country_codes))
                 or
                 (not($this->config['ppfilip_regfilter_ip_not_found_allow']) and $iso_code == constants::ACP_REGFILTER_COUNTRY_NOT_FOUND)
             );
