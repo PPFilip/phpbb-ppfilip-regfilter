@@ -36,7 +36,9 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'ACP_REGFILTER'					=> 'Filter registrations by country',
+    'ACP_REGFILTER_REQUIREMENTS'			=> 'To install this extension, The following PHP extensions are required: curl, dom and Phar. This extension works with phpBB 3.3.',
+
+    'ACP_REGFILTER'					=> 'Filter registrations by country',
 	'ACP_REGFILTER_TITLE'			=> 'Filter registrations by country settings',
 	'ACP_REGFILTER_TITLE_EXPLAIN'	=> 'This extension allows you to filter registrations to your board based on country associated with user IP address. This product uses GeoLite2 database by MaxMind, available from <a href="https://www.maxmind.com" target="_blank">https://www.maxmind.com</a>.',
 	'ACP_REGFILTER_TITLE_SHORT'		=> 'Settings',

@@ -68,7 +68,6 @@ class acp_controller
         $groups_table
     )
 	{
-
 		$this->config	= $config;
 		$this->config_text = $config_text;
 		$this->helper 	= $helper;
@@ -82,7 +81,6 @@ class acp_controller
 		$this->db = $db;
 		$this->groups_table = $groups_table;
 		$this->group_helper = $group_helper;
-
 	}
 
 	/**

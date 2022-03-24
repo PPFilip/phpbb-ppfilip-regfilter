@@ -13,11 +13,6 @@ namespace ppfilip\regfilter\core;
 
 class common
 {
-
-	/**
-	 * Constructor
-	 */
-
 	protected $config;
 	protected $language;
 	protected $phpbb_log;
@@ -61,9 +56,7 @@ class common
 		// Gets the name of the country in the user's language. What's returned by MaxMind is the country's name in English.
 		$this->language->add_lang('common', 'ppfilip/regfilter');
 
-		$country_name = (isset($this->user->lang['ACP_REGFILTER_COUNTRY_' . $country_code])) ? $this->user->lang['ACP_REGFILTER_COUNTRY_' . $country_code] : $this->language->lang('ACP_REGFILTER_UNKNOWN');
-
-		return $country_name;
+        return (isset($this->user->lang['ACP_REGFILTER_COUNTRY_' . $country_code])) ? $this->user->lang['ACP_REGFILTER_COUNTRY_' . $country_code] : $this->language->lang('ACP_REGFILTER_UNKNOWN');
 	}
 
 }

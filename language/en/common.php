@@ -38,8 +38,6 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, array(
 	'PLURAL_RULE'						    => 1,
 
-    'ACP_REGFILTER_REQUIREMENTS'			=> 'To install this extension, The following PHP extensions are required: curl, dom and Phar. This extension works with phpBB 3.3.',
-
     'ACP_REGFILTER_COUNTRY_AF' => 'Afghanistan',
     'ACP_REGFILTER_COUNTRY_AX' => 'Åland Islands',
     'ACP_REGFILTER_COUNTRY_AL' => 'Albania',

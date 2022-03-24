@@ -11,7 +11,7 @@
 
 <form id="ppfilip_regfilter_acp" name="ppfilip_regfilter_acp" method="post" action="{{ U_ACTION }}">
 	<fieldset>
-{% if S_SETTINGS %}
+	{% if S_SETTINGS %}
 		<legend>{{ lang('SETTINGS') }}</legend>
 		<dl>
 			<dt><label>{{ lang('ACP_REGFILTER_ACCOUNT_ID') ~ lang('COLON') }}</label><br>{{ lang('ACP_REGFILTER_ACCOUNT_ID_EXPLAIN') }}</dt>
@@ -60,7 +60,7 @@
 				<br><br><button type="button" id="unselect_options" name="unselect_options">{{ lang('ACP_REGFILTER_UNSELECT_ALL') }}</button>
 			</dd>
 		</dl>
-{% endif %}
+	{% endif %}
 	</fieldset>
 	<fieldset class="submit-buttons">
 		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;

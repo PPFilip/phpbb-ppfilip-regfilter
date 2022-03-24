@@ -138,7 +138,8 @@ class main_listener implements EventSubscriberInterface
      */
     public function group_deleted($event)
     {
-        if ($event['group_id'] == $this->config['ppfilip_regfilter_add_blocked_country_to_group']) {
+        if ($event['group_id'] == $this->config['ppfilip_regfilter_add_blocked_country_to_group'])
+        {
             $this->config->set('ppfilip_regfilter_add_blocked_country_to_group', 0);
             $this->log_disable_group_add($event['group_name']);
         }
