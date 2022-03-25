@@ -114,7 +114,7 @@ class main_listener implements EventSubscriberInterface
             $is_on_blacklist = (
                 ($this->config['ppfilip_regfilter_allow'] xor in_array($iso_code, $country_codes))
                 or
-                (not($this->config['ppfilip_regfilter_ip_not_found_allow']) and $iso_code == constants::ACP_REGFILTER_COUNTRY_NOT_FOUND)
+                (!($this->config['ppfilip_regfilter_ip_not_found_allow']) and $iso_code == constants::ACP_REGFILTER_COUNTRY_NOT_FOUND)
             );
 
             if ($is_on_blacklist)
